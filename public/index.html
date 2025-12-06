@@ -31,7 +31,7 @@
   </section>
 
   <div class="buttons">
-    <button id="meu-chatbot">💬 Chat Bot</button>
+    <button id="btnAbrirChatbot">💬 Chat Bot</button>
     <button id="abrirIA">👁️ Reconhecimento Facial</button>
   </div>
 
@@ -63,14 +63,16 @@
      <!-- Script principal -->
     <script defer src="script.js"></script>
 
-      <!-- 🔥 Chatbot Dialogflow -->
-  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
-  <df-messenger
-      intent="WELCOME"
-      chat-title="Chatbot-IA"
-      agent-id="7e9ea28d-fc2a-4f18-a435-1d31267d9a34"
-      language-code="pt-br">
-  </df-messenger>
+   <!-- Chatbot -->
+
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>;
+
+<df-messenger
+  intent="WELCOME"
+  chat-title="ECOBOT"
+  agent-id="6c106d6c-eef7-41db-92b4-5bf82848937e"
+  language-code="pt-br">
+</df-messenger>
 
 </body>
 </html>

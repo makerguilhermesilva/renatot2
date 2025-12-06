@@ -1,11 +1,10 @@
 // ----------------- Chatbot -----------------
-/*function abrirChatbot() {
-  const chatbot = document.getElementById("meu-chatbot");
-  chatbot.style.display = chatbot.style.display === "none" ? "block" : "none"; */
+const botaoChat = document.getElementById("btnAbrirChatbot");
+const dfMessenger = document.querySelector("df-messenger");
 
-  document.getElementById("chatbot-btn").addEventListener("click", () => {
-  const df = document.querySelector("df-messenger");
-  df.show(); // abre o chatbot
+botaoChat.addEventListener("click", () => {
+    dfMessenger.classList.toggle("aberto");
+    dfMessenger.setAttribute("opened", dfMessenger.classList.contains("aberto"));
 });
 
 // ----------------- Variáveis globais -----------------
