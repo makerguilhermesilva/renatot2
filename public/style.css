@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at top, #003366, #000814);
+  color: #e0f7ff;
+  overflow-x: hidden;
+}
+
+header {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: linear-gradient(to bottom, #005f99, #002f5f);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+header h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #00cfff;
+  text-shadow: 0 0 20px rgba(0, 191, 255, 0.6);
+}
+
+header p {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: #aee8ff;
+}
+
+nav {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+nav a {
+  background: #00cfff;
+  color: #002f4f;
+  text-decoration: none;
+  padding: 0.8rem 1.4rem;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  background: #00eaff;
+  transform: translateY(-3px);
+  box-shadow: 0 0 15px #00eaff;
+}
+
+section {
+  text-align: center;
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 1rem;
+}
+
+section h2 {
+  font-size: 2rem;
+  color: #00d4ff;
+  margin-bottom: 1rem;
+}
+
+section p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #d2f1ff;
+}
+
+.zona-img {
+  width: 100%;
+  max-width: 650px;
+  border-radius: 15px;
+  margin-top: 1.5rem;
+  box-shadow: 0 0 25px rgba(0,255,255,0.2);
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  background: #001a33;
+  color: #8ecfff;
+  font-size: 0.9rem;
+}
+
+.buttons {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.buttons button {
+  margin: 0 10px;
+  background: #00cfff;
+  border: none;
+  color: #002f4f;
+  padding: 0.8rem 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.buttons button:hover {
+  background: #00eaff;
+  transform: scale(1.1);
+}
+
+/* Chatbot */
+#chatbot-box {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 300px;
+  height: 360px;
+  background: rgba(0,60,90,0.95);
+  border-radius: 15px;
+  padding: 15px;
+  display: none;
+  flex-direction: column;
+  box-shadow: 0 0 20px rgba(0,255,255,0.2);
+}
+
+#chat-messages {
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+#chat-input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 10px;
+  border: none;
+}
+
+/* ===== Modal da Câmera ===== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 30, 60, 0.7); /* Azul escuro translúcido */
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  position: relative;
+  background: linear-gradient(180deg, rgba(0,120,180,0.95), rgba(0,60,100,0.95));
+  border-radius: 18px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  max-width: 720px;
+  width: 92%;
+}
+
+.modal-title {
+  color: #ffffff;
+  margin: 6px 0 12px 0;
+  font-size: 18px;
+}
+
+.video-wrap {
+  width: 100%;
+  display:flex;
+  justify-content:center;
+}
+
+video#video {
+  border-radius: 12px;
+  width: 640px;
+  max-width: 100%;
+  height: auto;
+  background: #000;
+}
+
+.controls {
+  display:flex;
+  gap: 14px;
+  margin-top: 12px;
+  align-items:center;
+  justify-content:center;
+}
+
+/* Botão circular foto */
+.botao-foto {
+  background-color: #00c0e8;
+  border: none;
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  font-size: 26px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color: #00324a;
+}
+
+/* Botão fechar (canto) */
+.botao-fechar {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255,255,255,0.06);
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* status text */
+.modal-status {
+  color: #e0f7ff;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+/* CHATBOT */
+df-messenger {
+  transform: scale(0);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+df-messenger.aberto {
+  transform: scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}

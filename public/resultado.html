@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🐠 Emoção Detectada no Fundo do Mar</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      color: #eaf9ff;
+      background: radial-gradient(circle at 30% 30%, #0099ff, #001f3f 70%);
+      overflow-y: auto;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      justify-content: flex-start;
+      text-align: center;
+      position: relative;
+    }
+
+    header {
+      margin-top: 30px;
+      font-size: 2em;
+      font-weight: bold;
+      color: #bffaff;
+      text-shadow: 0 0 20px rgba(255,255,255,0.7);
+      z-index: 2;
+      animation: flutuar 3s ease-in-out infinite;
+    }
+
+    @keyframes flutuar {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(6px);
+      border-radius: 25px;
+      padding: 40px;
+      margin-top: 30px;
+      width: 85%;
+      max-width: 750px;
+      box-shadow: 0 0 40px rgba(0, 150, 255, 0.2);
+      position: relative;
+      z-index: 2;
+      animation: aparecer 1.2s ease forwards;
+    }
+
+    @keyframes aparecer {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .emocoes {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 10px;
+      margin-bottom: 25px;
+    }
+
+    .emocao-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 1em;
+      transition: transform 0.3s;
+      cursor: default;
+    }
+
+    .emocao-item span {
+      font-size: 2em;
+      animation: flutuar 3.5s ease-in-out infinite;
+    }
+
+    .emocao-item:hover {
+      transform: scale(1.1);
+    }
+
+    .card {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      animation: brilho 6s infinite alternate ease-in-out;
+    }
+
+    @keyframes brilho {
+      0% { box-shadow: 0 0 25px rgba(0,191,255,0.2); }
+      100% { box-shadow: 0 0 50px rgba(0,191,255,0.5); }
+    }
+
+    .card img {
+      max-width: 300px;
+      border-radius: 12px;
+      display: block;
+      margin: 0 auto 20px auto;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      animation: balancar 4s ease-in-out infinite;
+    }
+
+    @keyframes balancar {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(1.5deg); }
+    }
+
+    .card img:hover {
+      transform: scale(1.07);
+      box-shadow: 0 0 30px rgba(255,255,255,0.6);
+    }
+
+    h1 {
+      margin-bottom: 8px;
+      color: #c8f9ff;
+      font-size: 1.8em;
+    }
+
+    h2 {
+      font-size: 1.6em;
+      margin: 10px 0;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 12px 24px;
+      background: #00b4d8;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease, transform 0.2s;
+      box-shadow: 0 0 20px rgba(0,191,255,0.4);
+    }
+
+    button:hover {
+      background: #0093ba;
+      transform: scale(1.05);
+    }
+
+    /* Bolhas animadas */
+    .bubbles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .bubble {
+      position: absolute;
+      bottom: -150px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      animation: subir 10s infinite ease-in;
+    }
+
+    @keyframes subir {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-120vh) scale(1.3); opacity: 0; }
+    }
+
+    .feliz { background: radial-gradient(circle at 40% 40%, #00bfff, #001f4d 80%); }
+    .neutro { background: radial-gradient(circle at 40% 40%, #0088cc, #001a33 80%); }
+    .triste { background: radial-gradient(circle at 40% 40%, #003355, #00091a 80%); }
+
+    /* Controle de som */
+    .audio-control {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 5;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 10px 16px;
+      border-radius: 30px;
+      color: white;
+      font-size: 0.9em;
+      cursor: pointer;
+      backdrop-filter: blur(5px);
+      transition: background 0.3s ease;
+    }
+    .audio-control:hover {
+      background: rgba(255,255,255,0.25);
+    }
+  </style>
+</head>
+<body>
+  <div class="bubbles" id="bubbles"></div>
+
+  <header>🐠 Emoção Detectada no Fundo do Mar</header>
+
+  <div class="container">
+    <div class="emocoes">
+      <div class="emocao-item"><span>🐬</span><p>Feliz</p></div>
+      <div class="emocao-item"><span>🐠</span><p>Neutro</p></div>
+      <div class="emocao-item"><span>🐙</span><p>Triste</p></div>
+    </div>
+
+    <h1>🌊 Emoção detectada:</h1>
+    <h2 id="emocaoTitle">Processando...</h2>
+    <p id="confTitle"></p>
+
+    <div class="card">
+      <img id="imagemEmocao" alt="Imagem relacionada à emoção" />
+      <button onclick="voltar()">Voltar</button>
+    </div>
+  </div>
+
+  <!-- Som ambiente -->
+  <audio id="somFundo" loop autoplay>
+    <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_8c3dfbf35b.mp3&quot; type="audio/mpeg">
+  </audio>
+  <div class="audio-control" id="toggleSom">🔊 Som: Ligado</div>
+
+  <script>
+    const imagensPorEmocao = {
+      feliz: ['static/mar_feliz/1.png', 'static/mar_feliz/2.png', 'static/mar_feliz/3.png'],
+      triste: ['static/mar_triste/1.png', 'static/mar_triste/2.png'],
+      neutro: ['static/mar_neutro/1.png', 'static/mar_neutro/2.png', 'static/mar_neutro/3.png']
+    };
+
+    const traducoes = {
+      happy: 'feliz',
+      sad: 'triste',
+      neutral: 'neutro',
+      angry: 'triste',
+      fearful: 'triste',
+      disgusted: 'triste',
+      surprised: 'feliz'
+    };
+
+    function getQueryParam(name) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(name);
+    }
+
+    function imagemAleatoria(lista) {
+      return lista[Math.floor(Math.random() * lista.length)];
+    }
+
+    const emocaoOriginal = getQueryParam('emocao') || 'neutral';
+    const conf = getQueryParam('conf') || '0';
+    const emocaoTraduzida = traducoes[emocaoOriginal] || 'nenhuma';
+
+    document.getElementById('emocaoTitle').innerText =
+      emocaoTraduzida.charAt(0).toUpperCase() + emocaoTraduzida.slice(1);
+    document.getElementById('confTitle').innerText = `Confiança: ${conf}%`;
+
+    if (imagensPorEmocao[emocaoTraduzida] && imagensPorEmocao[emocaoTraduzida].length > 0) {
+      document.getElementById('imagemEmocao').src =
+        imagemAleatoria(imagensPorEmocao[emocaoTraduzida]);
+    } else {
+      document.getElementById('imagemEmocao').style.display = 'none';
+    }
+
+    document.body.classList.add(emocaoTraduzida);
+
+    function voltar() {
+      window.location.href = 'index.html';
+    }
+
+    const bubblesContainer = document.getElementById('bubbles');
+    for (let i = 0; i < 25; i++) {
+      const bubble = document.createElement('div');
+      bubble.classList.add('bubble');
+      bubble.style.width = `${Math.random() * 40 + 10}px`;
+      bubble.style.height = bubble.style.width;
+      bubble.style.left = `${Math.random() * 100}%`;
+      bubble.style.animationDuration = `${8 + Math.random() * 6}s`;
+      bubble.style.animationDelay = `${Math.random() * 4}s`;
+      bubblesContainer.appendChild(bubble);
+    }
+
+    // Controle do som
+    const som = document.getElementById('somFundo');
+    const botaoSom = document.getElementById('toggleSom');
+    let somLigado = true;
+
+    botaoSom.addEventListener('click', () => {
+      if (somLigado) {
+        som.pause();
+        botaoSom.textContent = '🔇 Som: Desligado';
+      } else {
+        som.play();
+        botaoSom.textContent = '🔊 Som: Ligado';
+      }
+      somLigado = !somLigado;
+    });
+  </script>
+</body>
+</html>

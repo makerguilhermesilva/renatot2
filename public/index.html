@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zonas do Oceano 🌊</title>
+    <!-- Bibliotecas -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.8.0/dist/tf.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🌊 As Zonas do Oceano 🌍</h1>
+    <p>"Cada camada das profundezas guarda um segredo, uma cor e uma vida diferente." 🐋✨</p>
+
+    <nav>
+      <a href="templates/litoranea.html">🏝️ Litorânea</a>
+      <a href="templates/epipelagica.html">☀️ Epipelágica</a>
+      <a href="templates/mesopelagica.html">🌅 Mesopelágica</a>
+      <a href="templates/batipelagica.html">🦑 Batipelágica</a>
+      <a href="templates/abissal.html">❄️ Abissal</a>
+      <a href="templates/hadal.html">🕳️ Hadal</a>
+    </nav>
+  </header>
+
+  <section class="main">
+    <h2>Bem-vindo ao Mundo Subaquático 🌊</h2>
+    <p>Explore as profundezas do oceano e descubra as maravilhas escondidas em cada zona marinha!  
+       Clique nos botões acima para mergulhar em cada camada do oceano. 🐠🐋</p>
+  </section>
+
+  <div class="buttons">
+    <button id="meu-chatbot">💬 Chat Bot</button>
+    <button id="abrirIA">👁️ Reconhecimento Facial</button>
+  </div>
+
+  <div id="chatbot-box">
+    <div id="chat-messages"></div>
+    <input type="text" id="chat-input" placeholder="Pergunte algo sobre as zonas do oceano...">
+  </div>
+
+  <footer>
+    🌎 Projeto Educativo | Fundo do Mar – “Explorando as Profundezas do Conhecimento”
+  </footer>
+
+    <!-- Modal da câmera (inicialmente escondido) -->
+  <div id="cameraModal" class="modal" aria-hidden="true" style="display:none;">
+    <div class="modal-content">
+      <button id="fecharModal" class="botao-fechar" title="Fechar">❌</button>
+      <h2 class="modal-title">Reconhecimento Facial</h2>
+      <div class="video-wrap">
+        <video id="video" autoplay muted playsinline></video>
+      </div>
+      <div class="controls">
+        <button id="tirarFoto" class="botao-foto" title="Tirar foto">📸</button>
+      </div>
+      <p id="modalStatus" class="modal-status">Aguardando...</p>
+      <canvas id="fotoCanvas" style="display:none;"></canvas>
+    </div>
+  </div>
+
+     <!-- Script principal -->
+    <script defer src="script.js"></script>
+
+      <!-- 🔥 Chatbot Dialogflow -->
+  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+  <df-messenger
+      intent="WELCOME"
+      chat-title="Chatbot-IA"
+      agent-id="7e9ea28d-fc2a-4f18-a435-1d31267d9a34"
+      language-code="pt-br">
+  </df-messenger>
+
+</body>
+</html>
